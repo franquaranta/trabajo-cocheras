@@ -1,0 +1,120 @@
+@use"./../../../../public/styles/colores.scss";
+@use"./../../../../public/styles/tablas.scss";
+
+#tabla{
+    display: flex;
+    flex-direction: column;
+    
+    #header-tabla{
+        font-size: 1.2em;
+        background-color: #4a4a4a;
+        color: white;
+        padding: 15px;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 2px solid black;
+        margin: 0 50px;
+        text-transform: uppercase;
+
+    }
+    > div {
+        display: grid;
+        grid-template-columns: 180px 1fr 1fr 1fr;
+        border-bottom: 1px solid #ccc;
+        padding: 15px;
+        background-color: #f8f8f8;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #ececec;
+        }
+
+        > div {
+            flex: 1;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .acciones-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    }
+}
+header{
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background-color: #333;
+    padding: 20px;
+    margin-bottom: 40px; 
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+
+    &:hover {
+        color: #ddd;
+    }
+}
+img{
+    height: 35px;
+}
+footer{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+}
+.boton-resaltado {
+    background-color: #5a5a5a;
+    font-size: 16px;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease;
+    
+    &:hover {
+      background-color: #4a4a4a;
+    }
+}
+  
+  .boton-eliminar {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    img {
+        width: 20px;
+        height: 20px;
+    }
+}
+.orden-filas {
+    display: flex;
+    justify-content: space-around;  
+    align-items: center;
+    gap: 5px;   
+    padding: 5px; 
+    width: 100%;  
+    &:hover {
+        background-color: #d6d1d1; 
+      }
+                
+}
+

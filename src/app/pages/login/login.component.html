@@ -1,0 +1,26 @@
+<div class="contenedor">
+    <h1>PARKING APP</h1>
+    <div class="login-contenedor">
+        <form>
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" [(ngModel)]= "datosLogin.username" name="username">
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" [(ngModel)]= "datosLogin.password" name="password">
+
+            <button type ="button" class="boton-resaltado" (click)="Login()">Iniciar sesión</button>
+        </form>
+        <div class="registrarse">
+            <p>No tienes cuenta?</p>
+        <form>
+            <button [routerLink]="['/registro']" >Regístrate aquí</button>
+        </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

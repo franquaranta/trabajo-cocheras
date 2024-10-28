@@ -1,0 +1,51 @@
+@use"./colores.scss";
+.tabla{
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    .header-tabla{
+     font-size: larger; font-weight: bold;   
+    } 
+    > div {
+     display: grid;
+     grid-template-columns: 50px 1fr 1fr 1fr;
+     border-bottom: 1px solid colores.$color-texto;
+     min-width: 600px;
+     justify-items: center;
+     align-items: center;
+     height: 50px;
+
+    }
+    > div:not(.header-tabla):hover{
+        background-color: rgba(0, 0, 0, 0.1)
+    }
+    .acciones-container{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        button{
+            width: 50px;
+            display: grid;
+            align-items: center;
+            img{
+                width: 80%;
+                margin: auto;
+            }
+        }
+
+    }
+}
+.disponible{
+    background-color: colores.$color-correcto;
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: colores.$color-texto-invertido;
+    pointer-events: none;
+}
+.ocupado{
+    background-color: colores.$color-error;
+    padding: 5px 10px;
+    border-radius: 15px;
+    color: colores.$color-texto-invertido;
+    pointer-events: none;
+}

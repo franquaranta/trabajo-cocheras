@@ -1,0 +1,31 @@
+<header>
+    <p>ESTADO COCHERAS</p>
+    <a href=""><img src="images/logo.png" alt="Logo"></a>
+</header>
+<main>
+    <div>
+        <button (click) = "agregarFila()" class="boton-resaltado" >AGREGAR FILA</button>
+    </div>
+    <div id="tabla">
+        <div id="header-tabla">
+            <div>{{header.id}}</div>
+            <div>{{header.deshabilitada}}</div>
+            <div>{{header.descripcion}}</div>
+            <div>{{header.acciones}}</div>
+        </div>
+    </div>
+    @for (fila of filas; track $index) {
+        <button class="orden-filas" (click)="abrirModalNuevoEstacionamiento(fila.id)" [disabled]="!fila.deshabilitada|| fila.activo">
+            <div>{{fila.id}}</div>
+            <div><span [ngClass]="{disponible: fila.deshabilitada, ocupado: !fila.deshabilitada}">{{fila.deshabilitada
+                ? 'DISPONIBLE'
+                : 'NO DISPONIBLE'}}</span></div>
+            <div>{{fila.descripcion}}</div>
+            <div class = "acciones-container">
+                <button (click)="cambiarDisponibilidadCochera($index, $event)"> <img src="images/prohibido.png" alt="cambiar disponibilidad"></button>
+                <button (click)="eliminarFila($index,$event)" class ="boton-eliminar"><img src="images/eliminar1.png" alt="eliminar"></button></div>
+        </button>
+    }
+<footer>
+    <a [routerLink]="['/login']">Cerrar sesión</a>
+</footer>
