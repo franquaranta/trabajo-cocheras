@@ -1,4 +1,6 @@
 export interface Estacionamiento {
+    estado: string;
+    habilitada: any;
     id: number;
     patente: string;
     horaIngreso: string;

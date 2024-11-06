@@ -1,31 +1,56 @@
 <header>
-    <p>ESTADO COCHERAS</p>
+    <p class="estado-cocheras">ESTADO COCHERAS</p>  
+    <a [routerLink]="['/reporte']" class="reporte">REPORTE</a>
+    <a [routerLink]="['/precios']" class="reporte">PRECIOS</a>
+    <a [routerLink]="['/login']" class="reporte">CERRAR SESIÓN</a>
     <a href=""><img src="images/logo.png" alt="Logo"></a>
 </header>
+
 <main>
     <div>
-        <button (click) = "agregarFila()" class="boton-resaltado" >AGREGAR FILA</button>
+        <button (click)="agregarFila()" class="boton-resaltado">AGREGAR FILA</button>
     </div>
     <div id="tabla">
-        <div id="header-tabla">
-            <div>{{header.id}}</div>
-            <div>{{header.deshabilitada}}</div>
-            <div>{{header.descripcion}}</div>
-            <div>{{header.acciones}}</div>
+        <div id="header-tabla" class="fila">
+            <div>{{ header.nro }}</div>
+            <div>{{ header.deshabilitada }}</div>
+            <div>{{ header.ingreso }}</div>
+            <div>{{ header.acciones }}</div>
         </div>
     </div>
-    @for (fila of filas; track $index) {
-        <button class="orden-filas" (click)="abrirModalNuevoEstacionamiento(fila.id)" [disabled]="!fila.deshabilitada|| fila.activo">
-            <div>{{fila.id}}</div>
-            <div><span [ngClass]="{disponible: fila.deshabilitada, ocupado: !fila.deshabilitada}">{{fila.deshabilitada
-                ? 'DISPONIBLE'
-                : 'NO DISPONIBLE'}}</span></div>
-            <div>{{fila.descripcion}}</div>
-            <div class = "acciones-container">
-                <button (click)="cambiarDisponibilidadCochera($index, $event)"> <img src="images/prohibido.png" alt="cambiar disponibilidad"></button>
-                <button (click)="eliminarFila($index,$event)" class ="boton-eliminar"><img src="images/eliminar1.png" alt="eliminar"></button></div>
-        </button>
-    }
+    <div *ngFor="let fila of filas; let i = index" class="orden-filas">
+        <div>{{ fila.id }}</div>
+        <div>
+            <span 
+                [ngClass]="{ disponible: fila.deshabilitada, ocupado: !fila.deshabilitada }" 
+                (click)="cambiarDisponibilidadCochera(fila)"
+            >
+                {{ fila.deshabilitada ? 'DISPONIBLE' : 'NO DISPONIBLE' }}
+            </span>
+        </div>
+        
+        <div *ngIf="!fila.deshabilitada && fila.patente" class="informacion-patente-ingreso">
+            <div class="patente">Patente: {{ fila.patente }}</div>
+            <div class="ingreso">Ingreso: {{ fila.fechaIngreso }} {{ fila.horaIngreso }}</div>
+        </div>
+        <div *ngIf="!fila.deshabilitada && fila.fechaDeshabilitado" class="informacion-patente-ingreso">
+            <div class="deshabilitado">Deshabilitado: {{ fila.fechaDeshabilitado }} {{ fila.horaDeshabilitado }}</div>
+        </div>
+    
+        <div class="acciones-container">
+            <button (click)="cambiarDisponibilidadCochera(fila)">
+                <img src="images/prohibido1.png" alt="cambiar disponibilidad">
+            </button>
+            <button (click)="eliminarFila(fila.id, $event)" class="boton-eliminar">
+                <img src="images/eliminar2.png" alt="eliminar">
+            </button>
+            <button *ngIf="!fila.deshabilitada && fila.descripcion !== 'Disponible'" (click)="cobrarEstacionamiento(fila.id)" class="boton-eliminar">
+                <img src="images/cobrar.png" alt="cobrar">
+            </button>
+        </div>
+    </div>
+</main>
+
 <footer>
     <a [routerLink]="['/login']">Cerrar sesión</a>
 </footer>

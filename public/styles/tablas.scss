@@ -40,7 +40,7 @@
     padding: 5px 10px;
     border-radius: 15px;
     color: colores.$color-texto-invertido;
-    pointer-events: none;
+    cursor: pointer;
 }
 .ocupado{
     background-color: colores.$color-error;
