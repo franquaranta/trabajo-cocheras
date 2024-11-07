@@ -46,11 +46,11 @@ export class EstacionamientosService {
     }).then(r=>r.json());
   }
   liberarCochera(idCochera: number) {
-    return fetch ('http://localhost:4000/cocheras/liberar', {
-      method: 'POST',
+    return fetch ('http://localhost:4000/estacionamientos/cerrar', {
+      method: 'PATCH',
       headers: {
         'content-Type': 'application/json',
-        Authorization: 'Bearer ' + (this.auth.getToken()),
+        Authorization: 'Bearer ' + (this.auth.getToken() ?? ""),
       
       body: JSON.stringify({idCochera})
     }}
