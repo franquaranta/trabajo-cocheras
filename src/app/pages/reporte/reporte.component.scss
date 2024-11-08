@@ -1,43 +1,11 @@
-header {
-    background-color: white;
-    padding: 15px 30px;
-    color: #635e5e;
-  
-    .header-nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-  
-    .header-title {
-        font-size: 1.5em;
-        font-weight: bold;
-    }
-  
-    .nav-links {
-        display: flex;
-        gap: 20px;
-  
-        a {
-            color: #514e4e;
-            text-decoration: none;
-            font-weight: bold;
-        }
-  
-        a:hover {
-            color: #3a3a3a;
-        }
-    }
-  }
-  
+
   main {
-    position: fixed;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom,grey, #605f5f);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    display: flex;
   }
   
   tr {

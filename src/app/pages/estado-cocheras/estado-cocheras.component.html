@@ -1,11 +1,4 @@
-<header>
-    <p class="estado-cocheras">ESTADO COCHERAS</p>  
-    <a [routerLink]="['/reporte']" class="reporte">REPORTE</a>
-    <a [routerLink]="['/precios']" class="reporte">PRECIOS</a>
-    <a [routerLink]="['/login']" class="reporte">CERRAR SESIÓN</a>
-    <a href=""><img src="images/logo.png" alt="Logo"></a>
-</header>
-
+<app-header></app-header>
 <main>
     <div>
         <button (click)="agregarFila()" class="boton-resaltado">AGREGAR FILA</button>
@@ -46,11 +39,8 @@
             </button>
             <button *ngIf="!fila.deshabilitada && fila.descripcion !== 'Disponible'" (click)="cobrarEstacionamiento(fila.id)" class="boton-eliminar">
                 <img src="images/cobrar.png" alt="cobrar">
-            </button>
+            </button>  
         </div>
     </div>
 </main>
 
-<footer>
-    <a [routerLink]="['/login']">Cerrar sesión</a>
-</footer>

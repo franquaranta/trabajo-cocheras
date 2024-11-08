@@ -1,15 +1,11 @@
 <header>
-    <h1>Parking App</h1>
-    <nav>
-        <a [routerLink] = "['/estado-cocheras']" routerLinkActive="activa">Estado de la cochera</a>
-        @if(esAdmin){
-            <a [routerLink] = "['/reportes']" routerLinkActive="activa">Reportes</a>  
-            <a>Precios</a>     
-        }
-        <a>Usuario</a>
-    </nav>
-    <button (click) = "abrirModal()">Modal test</button>
-    <p >Resultado es: {{resultadoInput}}</p>
+    <p class="estado-cocheras">PARKING APP</p>  
+    <div class="header-links">
+        <a [routerLink]="['/reporte']" class="reporte">REPORTE</a>
+        <a [routerLink]="['/estado-cocheras']" class="reporte">ESTADO COCHERAS</a>
+        <a [routerLink]="['/login']" class="reporte">CERRAR SESIÓN</a>
+        <a href=""><img src="images/logo.png" alt="Logo"></a>
+    </div>
 </header>
 
 

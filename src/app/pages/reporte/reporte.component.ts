@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HeaderComponent } from "../../components/header/header.component";
+import { HeaderComponent } from '../../components/header/header.component';
 import { AuthService } from '../../service/auth.service';
 import { CommonModule } from '@angular/common';
 import { Estacionamiento } from '../../interfaces/estacionamiento';
@@ -8,11 +8,7 @@ import { Estacionamiento } from '../../interfaces/estacionamiento';
 @Component({
   selector: 'app-reportes',
   standalone: true,
-  imports: [
-    RouterModule,
-    HeaderComponent,
-    CommonModule 
-  ],
+  imports: [RouterModule, HeaderComponent, CommonModule],
   templateUrl: './reporte.component.html',
   styleUrls: ['./reporte.component.scss']
 })

@@ -1,8 +1,39 @@
-@use"./../../../../public/styles/colores.scss";
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #5a5a5a;
+    padding: 10px 20px;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    height: 50px;
+    margin-bottom: 80px; 
+}
 
-h1{
-    font-size: xx-large;
+.estado-cocheras {
+    margin: 0;
+    font-weight: bold;
+    font-size: 18px;
 }
-.activa{
-    color: colores.$color-principal;
+
+.header-links {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
 }
+
+header a {
+    color: white; 
+    text-decoration: none;
+    margin-right: 5px;
+}
+
+header a img {
+    height: 30px;
+    width: auto; 
+}
+  
