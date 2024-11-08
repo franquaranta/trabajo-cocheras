@@ -30,6 +30,7 @@ export class EstadoCocherasComponent {
   estacionamientos = inject(EstacionamientosService);
   cocheras = inject(CocherasService);
 
+
   ngOnInit() {
     this.traerCocheras();
   }
@@ -193,7 +194,4 @@ export class EstadoCocherasComponent {
       console.error("Error al buscar el estacionamiento activo:", error);
       Swal.fire("Error", "Hubo un error al buscar el estacionamiento.", "error");
     });
-  }
-}
-
-
+  }}

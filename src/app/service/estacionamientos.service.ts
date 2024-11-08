@@ -87,3 +87,29 @@ export class EstacionamientosService {
 }
 
 }
+export class PatenteService {
+  solicitarPatente() {
+    throw new Error('Method not implemented.');
+  }
+  agregarPatente(idCochera: number): Promise<string> {
+    return new Promise((resolve, reject) => {
+      Swal.fire({
+        title: 'Ingrese la patente del vehículo',
+        input: 'text',
+        showCancelButton: true,
+        inputValidator: (value) => {
+          if (!value) {
+            return 'Por favor, ingrese una patente válida';
+          }
+          return null;
+        }
+      }).then((result) => {
+        if (result.isConfirmed && result.value) {
+          resolve(result.value);
+        } else {
+          reject('Operación cancelada o sin valor');
+        }
+      });
+    });
+  }
+}
