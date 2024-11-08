@@ -1,46 +1,71 @@
 <app-header></app-header>
 <main>
+  <div>
+    <button (click)="agregarFila()" class="boton-resaltado">
+      AGREGAR FILA
+    </button>
+  </div>
+  <div id="tabla">
+    <div id="header-tabla" class="fila">
+      <div>{{ header.nro }}</div>
+      <div>{{ header.deshabilitada }}</div>
+      <div>{{ header.ingreso }}</div>
+      <div>{{ header.acciones }}</div>
+    </div>
+  </div>
+  <div *ngFor="let fila of filas; let i = index" class="orden-filas">
+    <div>{{ fila.id }}</div>
     <div>
-        <button (click)="agregarFila()" class="boton-resaltado">AGREGAR FILA</button>
+      <span
+        [ngClass]="{
+          disponible: fila.deshabilitada,
+          ocupado: !fila.deshabilitada
+        }"
+        (click)="cambiarDisponibilidadCochera(fila)"
+      >
+        {{ fila.deshabilitada ? "DISPONIBLE" : "NO DISPONIBLE" }}
+      </span>
     </div>
-    <div id="tabla">
-        <div id="header-tabla" class="fila">
-            <div>{{ header.nro }}</div>
-            <div>{{ header.deshabilitada }}</div>
-            <div>{{ header.ingreso }}</div>
-            <div>{{ header.acciones }}</div>
-        </div>
+
+    <div
+      *ngIf="!fila.deshabilitada && fila.patente"
+      class="informacion-patente-ingreso"
+    >
+      <div class="patente">Patente: {{ fila.patente }}</div>
+      <div class="ingreso">
+        Ingreso: {{ fila.fechaIngreso }} {{ fila.horaIngreso }}
+      </div>
     </div>
-    <div *ngFor="let fila of filas; let i = index" class="orden-filas">
-        <div>{{ fila.id }}</div>
-        <div>
-            <span 
-                [ngClass]="{ disponible: fila.deshabilitada, ocupado: !fila.deshabilitada }" 
-                (click)="cambiarDisponibilidadCochera(fila)"
-            >
-                {{ fila.deshabilitada ? 'DISPONIBLE' : 'NO DISPONIBLE' }}
-            </span>
-        </div>
-        
-        <div *ngIf="!fila.deshabilitada && fila.patente" class="informacion-patente-ingreso">
-            <div class="patente">Patente: {{ fila.patente }}</div>
-            <div class="ingreso">Ingreso: {{ fila.fechaIngreso }} {{ fila.horaIngreso }}</div>
-        </div>
-        <div *ngIf="!fila.deshabilitada && fila.fechaDeshabilitado" class="informacion-patente-ingreso">
-            <div class="deshabilitado">Deshabilitado: {{ fila.fechaDeshabilitado }} {{ fila.horaDeshabilitado }}</div>
-        </div>
-    
-        <div class="acciones-container">
-            <button (click)="cambiarDisponibilidadCochera(fila)">
-                <img src="images/prohibido1.png" alt="cambiar disponibilidad">
-            </button>
-            <button (click)="eliminarFila(fila.id, $event)" class="boton-eliminar">
-                <img src="images/eliminar2.png" alt="eliminar">
-            </button>
-            <button *ngIf="!fila.deshabilitada && fila.descripcion !== 'Disponible'" (click)="cobrarEstacionamiento(fila.id)" class="boton-eliminar">
-                <img src="images/cobrar.png" alt="cobrar">
-            </button>  
-        </div>
+    <div
+      *ngIf="!fila.deshabilitada && fila.fechaDeshabilitado"
+      class="informacion-patente-ingreso"
+    >
+      <div class="deshabilitado">
+        Deshabilitado: {{ fila.fechaDeshabilitado }}
+        {{ fila.horaDeshabilitado }}
+      </div>
     </div>
+
+    <div class="acciones-container">
+      <button
+        (click)="cambiarEstadoManual(fila)"
+        [disabled]="fila.patente"
+        [ngClass]="{ 'button-disabled': fila.patente }"
+      >
+        <img src="images/prohibido1.png" alt="cambiar disponibilidad" />
+      </button>
+      <button (click)="eliminarFila(fila.id, $event)" class="boton-eliminar">
+        <img src="images/eliminar2.png" alt="eliminar" />
+      </button>
+      <button
+        *ngIf="!fila.deshabilitada && fila.descripcion !== 'Disponible'"
+        (click)="cobrarEstacionamiento(fila.id)"
+        class="boton-eliminar"
+      >
+        <img src="images/cobrar.png" alt="cobrar" />
+      </button>
+    </div>
+  </div>
 </main>
+
 
